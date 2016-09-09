@@ -1,0 +1,39 @@
+{
+  "name": "users",
+  "version": "0.0.1",
+  "description": "ISR programming examination",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon -w . --exec \"babel-node server.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jekku/users.git"
+  },
+  "keywords": [
+    "users",
+    "ISR"
+  ],
+  "author": "Jekri Preclaro Orlina",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jekku/users/issues"
+  },
+  "homepage": "https://github.com/jekku/users#readme",
+  "devDependencies": {
+    "babel-cli": "^6.14.0",
+    "babel-core": "^6.14.0",
+    "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-preset-es2015": "^6.14.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "nodemon": "^1.10.2"
+  },
+  "dependencies": {
+    "anytv-node-cors": "0.0.7",
+    "anytv-node-mysql": "0.0.49",
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "winston": "^2.2.0"
+  }
+}
