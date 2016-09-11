@@ -16,5 +16,5 @@ export default class User {
 
         this.id = getV4UUID();
     }
-};
+}
 
