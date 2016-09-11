@@ -8,7 +8,7 @@ export default {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'earnings',
+        database: 'user_app',
         connectionLimit: 20
     }
 };
