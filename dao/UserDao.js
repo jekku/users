@@ -92,5 +92,5 @@ function returnSingleUser (callback, err, result) {
     }
 
     callback(null, new User(result[0]));
-};
+}
 
