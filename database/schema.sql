@@ -30,6 +30,6 @@ CREATE TABLE users (
     last_name varchar(50) NOT NULL,
     email_address varchar(254) NOT NULL,
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    date_updated DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+    date_updated DATETIME DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
