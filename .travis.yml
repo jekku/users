@@ -10,4 +10,5 @@ before_script:
     - npm install -g mocha
     - npm install -g babel-cli
     - mysql -e 'create database user_app_staging;'
+    - mysql -uroot < database/schema.sql
 
