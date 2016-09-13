@@ -1,8 +1,3 @@
-DROP DATABASE IF EXISTS user_app;
-CREATE DATABASE user_app;
-
-USE user_app;
-
 /*
     RULES:
 
