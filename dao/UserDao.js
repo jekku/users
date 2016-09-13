@@ -42,7 +42,7 @@ export const addNewUser = (fields, callback) => {
             return callback(err);
         }
 
-        callback();
+        callback(null, result);
     }
 
     buildAndAddUser();
