@@ -40,15 +40,7 @@ export const registerUser = (req, res) => {
             });
         }
 
-        let isUnique = true;
-
-        forEach(result, (identifier, index) => {
-            if (identifier) {
-                isUnique = false;
-            }
-        });
-
-        if (!isUnique) {
+        if (result[0] || result[1]) {
             return res.status(400)
               .send({message: 'Email or username is already taken'});
         }
