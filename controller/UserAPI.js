@@ -2,7 +2,7 @@
 
 import * as UserService from '../service/UserService';
 import {default as Validator} from 'validatorjs';
-import {parallel as parallelize} from 'async';
+import {parallel as parallelize, forEach} from 'async';
 
 export const registerUser = (req, res) => {
     const inputRules = {
@@ -30,7 +30,7 @@ export const registerUser = (req, res) => {
     }
 
     function checkEmailExistence (callback) {
-        UserService.getUserByEmail(req.body.email, callback);
+        UserService.getUserByEmail(req.body.email_address, callback);
     }
 
     function verifyUniqueIdentifiers (err, result) {
@@ -42,11 +42,16 @@ export const registerUser = (req, res) => {
 
         let isUnique = true;
 
-        result.forEach( identifier => {
+        forEach(result, (identifier, index) => {
             if (identifier) {
                 isUnique = false;
             }
         });
+
+        if (!isUnique) {
+            return res.status(400)
+              .send({message: 'Email or username is already taken'});
+        }
 
         addNewUser();
     }
@@ -57,7 +62,6 @@ export const registerUser = (req, res) => {
 
     function sendFinalResponse (err, result) {
         if (err) {
-            console.log(err);
             return res.status(500)
               .send({'message': 'We had trouble completing your registration'});
         }

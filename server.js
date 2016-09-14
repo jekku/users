@@ -9,9 +9,14 @@ import {log} from 'winston';
 import {default as mysql} from 'anytv-node-mysql';
 import {default as cors} from 'anytv-node-cors';
 
+let handler;
 let app;
 
 const start = () => {
+    if (handler) {
+        handler.close();
+    }
+
     app = express();
 
     //Setup environment related details to server
@@ -34,7 +39,10 @@ const start = () => {
 
 }
 
-start();
+handler = start();
 
-export default app;
+export default {
+  app,
+  handler
+}
 
