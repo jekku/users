@@ -11,4 +11,5 @@ before_script:
     - npm install -g babel-cli
     - mysql -e 'create database user_app_staging;'
     - mysql -uroot user_app_staging < database/schema.sql
+    - mysql -uroot user_app_staging < database/seed.sql
 
