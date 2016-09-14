@@ -20,6 +20,14 @@ const sampleUser = {
     last_name: 'Orlina'
 };
 
+const existingUser = {
+    username: 'javier_alcazar',
+    password: 'plainText',
+    email_address: 'javier@isr.ph',
+    first_name: 'Javier',
+    last_name: 'Alcázar'
+};
+
 describe('User API', () => {
     describe('Registration module', () => {
         it('Should not allow missing required fields', (done) => {
@@ -52,7 +60,7 @@ describe('User API', () => {
         it('Should not allow registration of existing Email and Username', (done) => {
             api.post(`${userApiRoot}/register`)
               .type('form')
-              .send(sampleUser)
+              .send(existingUser)
               .expect(400)
               .end((err, res) => {
                   const response = JSON.parse(res.text);

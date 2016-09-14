@@ -40,12 +40,12 @@ export const registerUser = (req, res) => {
             });
         }
 
-        if (result[0] || result[1]) {
-            return res.status(400)
-              .send({message: 'Email or username is already taken'});
+        if (!result[0] && !result[1]) {
+            return addNewUser();
         }
 
-        addNewUser();
+        res.status(400)
+            .send({message: 'Email or username is already taken'});
     }
 
     function addNewUser () {
