@@ -1,8 +1,3 @@
-DROP DATABASE IF EXISTS user_app;
-CREATE DATABASE user_app;
-
-USE user_app;
-
 /*
     RULES:
 
@@ -28,8 +23,8 @@ CREATE TABLE users (
     salt varchar(64) NOT NULL,
     first_name varchar(50) NOT NULL,
     last_name varchar(50) NOT NULL,
-    email_address varchar(254) NOT NULL,
+    email_address varchar(254) CHARACTER SET utf8 NOT NULL UNIQUE,
     date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    date_updated DATETIME DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP
+    date_updated DATETIME DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 

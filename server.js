@@ -9,8 +9,15 @@ import {log} from 'winston';
 import {default as mysql} from 'anytv-node-mysql';
 import {default as cors} from 'anytv-node-cors';
 
+let handler;
+let app;
+
 const start = () => {
-    const app = express();
+    if (handler) {
+        handler.close();
+    }
+
+    app = express();
 
     //Setup environment related details to server
     app.set('env', config.ENV);
@@ -28,9 +35,14 @@ const start = () => {
 
     //bind server to PORT specified in selected environment
     log('info', `Server listening on port ${config.PORT}`);
-    app.listen(config.PORT);
+    return app.listen(config.PORT);
 
 }
 
-start();
+handler = start();
+
+export default {
+  app,
+  handler
+}
 

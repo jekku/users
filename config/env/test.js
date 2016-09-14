@@ -1,14 +1,14 @@
 'use strict';
 
 export default {
-    ENV: 'development',
+    ENV: 'test',
     PORT: 6969,
 
     APP_DB: {
         host: 'localhost',
         user: 'root',
         password: '',
-        database: 'user_app',
+        database: 'user_app_staging',
         connectionLimit: 20
     }
 };

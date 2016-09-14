@@ -7,8 +7,8 @@ const config = {
     APP_NAME: 'Users App',
 
     CORS: {
-        allowed_headers: 'Access-Token, X-Requested-With, Content-Type, Accept',
         allowed_origins: '*',
+        allowed_headers: 'Access-Token, X-Requested-With, Content-Type, Accept',
         allowed_methods: 'GET, POST, PUT, OPTIONS, DELETE'
     },
 

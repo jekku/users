@@ -4,7 +4,8 @@
   "description": "ISR programming examination",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon -w . --exec \"babel-node server.js\""
+    "start": "nodemon -w . --exec \"babel-node server.js\"",
+    "test": "NODE_ENV=test mocha -r should test/test-server.js --compilers js:babel-register"
   },
   "repository": {
     "type": "git",
@@ -26,14 +27,21 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-stage-0": "^6.5.0",
-    "nodemon": "^1.10.2"
+    "babel-register": "^6.14.0",
+    "chai": "^3.2.0",
+    "nodemon": "^1.10.2",
+    "should": "^11.1.0"
   },
   "dependencies": {
     "anytv-node-cors": "0.0.7",
     "anytv-node-mysql": "0.0.49",
+    "async": "^2.0.1",
     "body-parser": "^1.15.2",
+    "chance": "^1.0.4",
     "compression": "^1.6.2",
     "express": "^4.14.0",
+    "supertest": "^2.0.0",
+    "validatorjs": "^3.6.0",
     "winston": "^2.2.0"
   }
 }
