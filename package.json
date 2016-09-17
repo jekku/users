@@ -40,6 +40,7 @@
     "chance": "^1.0.4",
     "compression": "^1.6.2",
     "express": "^4.14.0",
+    "express-session": "^1.14.1",
     "supertest": "^2.0.0",
     "validatorjs": "^3.6.0",
     "winston": "^2.2.0"
