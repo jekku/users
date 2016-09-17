@@ -88,7 +88,7 @@ export const login = (req, res) => {
 
         if (!result) {
             return res.status(400)
-              .send({message: 'This username does not exist.'});
+              .send({message: 'This username does not exist'});
         }
 
         const userToCompare = new User(req.body);
