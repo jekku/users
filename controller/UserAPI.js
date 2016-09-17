@@ -98,14 +98,16 @@ export const login = (req, res) => {
         if (userToCompare.password === result.password) {
             delete result.password;
             delete result.salt;
-
             req.session.user = result;
+
+            return res.send({
+                message: 'Successfully logged in',
+                data: req.session.user
+            });
         }
 
-        res.send({
-            message: 'Successfully logged in',
-            data: req.session.user
-        });
+        res.status(400)
+          .send({message: 'Invalid username and password combination'});
     }
 
     validateLoginCredentials();
