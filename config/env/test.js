@@ -2,7 +2,7 @@
 
 export default {
     ENV: 'test',
-    PORT: 6969,
+    PORT: 7000,
 
     APP_DB: {
         host: 'localhost',

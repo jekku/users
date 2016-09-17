@@ -14,7 +14,19 @@ export default class User {
 
     buildAuthProtection () {
         if (!this.salt) {
+            this.assignSalt();
+            this.encryptPassword();
+        }
+    }
+
+    assignSalt () {
+        if (!this.salt) {
             this.salt = getRandomString();
+        }
+    }
+
+    encryptPassword () {
+        if (this.salt) {
             this.password = encrypt(this.password, this.salt);
         }
     }

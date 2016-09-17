@@ -76,7 +76,7 @@ Milestone Progress
 ----
 - API
   - [x] User registration
-  - [ ] User login
+  - [x] User login
   - [ ] User logout
 
 - Frontend

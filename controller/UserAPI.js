@@ -3,11 +3,12 @@
 import * as UserService from '../service/UserService';
 import {default as Validator} from 'validatorjs';
 import {parallel as parallelize, forEach} from 'async';
+import {default as User} from '../model/User';
 
 export const registerUser = (req, res) => {
     const inputRules = {
         username: 'required|between:4,36',
-        password: 'required|between:8,128',
+        password: 'required|between:4,128',
         first_name: 'required|between:2,50',
         last_name: 'required|between:2,50',
         email_address: 'required|email'
@@ -55,12 +56,60 @@ export const registerUser = (req, res) => {
     function sendFinalResponse (err, result) {
         if (err) {
             return res.status(500)
-              .send({'message': 'We had trouble completing your registration'});
+              .send({message: 'We had trouble completing your registration'});
         }
 
         res.send({message: 'Successfully registered'});
     }
 
     validateUserData();
+};
+
+export const login = (req, res) => {
+    const inputRules = {
+        username: 'required|between:4,36',
+        password: 'required|between:4,128'
+    };
+    const loginValidation = new Validator(req.body, inputRules);
+
+    function validateLoginCredentials () {
+        if (loginValidation.fails()) {
+           return res.status(400).send(loginValidation.errors);
+        }
+
+        UserService.getUserByUsername(req.body.username, compareProvidedAuthentication);
+    }
+
+    function compareProvidedAuthentication (err, result) {
+        if (err) {
+            return res.status(500)
+              .send({message: 'Please try again later'});
+        }
+
+        if (!result) {
+            return res.status(400)
+              .send({message: 'This username does not exist'});
+        }
+
+        const userToCompare = new User(req.body);
+        userToCompare.salt = result.salt;
+        userToCompare.encryptPassword();
+
+        if (userToCompare.password === result.password) {
+            delete result.password;
+            delete result.salt;
+            req.session.user = result;
+
+            return res.send({
+                message: 'Successfully logged in',
+                data: req.session.user
+            });
+        }
+
+        res.status(400)
+          .send({message: 'Invalid username and password combination'});
+    }
+
+    validateLoginCredentials();
 };
 

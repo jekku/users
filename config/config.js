@@ -6,6 +6,8 @@ import path from 'path';
 const config = {
     APP_NAME: 'Users App',
 
+    SESSION_SECRET: 'AEZAKMIBAGUVIX',
+
     CORS: {
         allowed_origins: '*',
         allowed_headers: 'Access-Token, X-Requested-With, Content-Type, Accept',

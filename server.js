@@ -1,6 +1,7 @@
 'use strict';
 
 import express from 'express';
+import {default as session} from 'express-session';
 import {default as config} from './config/config';
 import {default as router} from './config/router';
 import {urlencoded, json} from 'body-parser';
@@ -19,11 +20,18 @@ const start = () => {
 
     app = express();
 
-    //Setup environment related details to server
+    // setup environment related details to server
     app.set('env', config.ENV);
     config.use(process.env.NODE_ENV);
     mysql.add('app_db', config.APP_DB, true);
     log('info', `Starting ${config.APP_NAME} on ${config.ENV} environment`);
+
+    // session store setup
+    app.use(session({
+        secret: config.SESSION_SECRET,
+        saveUninitialized: false,
+        resave: false
+    }));
 
     // middleware setup for receiving API request payload and headers
     log('info', 'Applying custom middleware');
@@ -33,7 +41,7 @@ const start = () => {
     app.use(cors(config.cors));
     app.use(router());
 
-    //bind server to PORT specified in selected environment
+    // bind server to PORT specified in selected environment
     log('info', `Server listening on port ${config.PORT}`);
     return app.listen(config.PORT);
 
