@@ -8,61 +8,63 @@ const userApiRoot = '/api/user';
 describe('User API', () => {
     describe('Registration module', registrationModuleTests);
 
-    describe('Login module', () => {
-        const validLogin = {
-            username: 'javier_alcazar',
-            password: 'user'
-        };
-
-        const wrongPassword = {
-            username: 'javier_alcazar',
-            password: 'yooser'
-        };
-
-        const wrongUsername = {
-            username: 'jekri',
-            password: 'password123'
-        };
-
-        it('Should allow login for valid users', (done) => {
-            api.post(`${userApiRoot}/login`)
-              .type('form')
-              .send(validLogin)
-              .expect(200)
-              .end((err, res) => {
-                  const response = JSON.parse(res.text);
-                  response.message.should.be.exactly('Successfully logged in');
-
-                  done();
-              });
-        });
-
-        it('Should reject invalid username', (done) => {
-            api.post(`${userApiRoot}/login`)
-              .type('form')
-              .send(wrongUsername)
-              .expect(200)
-              .end((err, res) => {
-                  const response = JSON.parse(res.text);
-                  response.message.should.be.exactly('This username does not exist');
-
-                  done();
-              });
-        });
-
-        it('Should reject invalid password', (done) => {
-            api.post(`${userApiRoot}/login`)
-              .type('form')
-              .send(wrongPassword)
-              .expect(200)
-              .end((err, res) => {
-                  const response = JSON.parse(res.text);
-                  response.message.should.be.exactly('Invalid username and password combination');
-                  done();
-              });
-        });
-    });
+    describe('Login module', loginModuleTests);
 });
+
+function loginModuleTests () {
+    const validLogin = {
+        username: 'javier_alcazar',
+        password: 'user'
+    };
+
+    const wrongPassword = {
+        username: 'javier_alcazar',
+        password: 'yooser'
+    };
+
+    const wrongUsername = {
+        username: 'jekri',
+        password: 'password123'
+    };
+
+    it('Should allow login for valid users', (done) => {
+        api.post(`${userApiRoot}/login`)
+          .type('form')
+          .send(validLogin)
+          .expect(200)
+          .end((err, res) => {
+              const response = JSON.parse(res.text);
+              response.message.should.be.exactly('Successfully logged in');
+
+              done();
+          });
+    });
+
+    it('Should reject invalid username', (done) => {
+        api.post(`${userApiRoot}/login`)
+          .type('form')
+          .send(wrongUsername)
+          .expect(200)
+          .end((err, res) => {
+              const response = JSON.parse(res.text);
+              response.message.should.be.exactly('This username does not exist');
+
+              done();
+          });
+    });
+
+    it('Should reject invalid password', (done) => {
+        api.post(`${userApiRoot}/login`)
+          .type('form')
+          .send(wrongPassword)
+          .expect(200)
+          .end((err, res) => {
+              const response = JSON.parse(res.text);
+              response.message.should.be.exactly('Invalid username and password combination');
+              done();
+          });
+    });
+}
 
 function registrationModuleTests () {
     const requiredFields = [
@@ -117,13 +119,10 @@ function registrationModuleTests () {
 
     it('Should not allow registration of existing Email and Username', (done) => {
         api.post(`${userApiRoot}/register`)
-          .type('form')
-          .send(existingUser)
-          .expect(400)
-          .end((err, res) => {
-              const response = JSON.parse(res.text);
+          .type('form') .send(existingUser) .expect(400) .end((err, res) => { const response = JSON.parse(res.text);
               response.message.should.be.exactly('Email or username is already taken');
               done();
           });
     });
 }
+
