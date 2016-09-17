@@ -113,3 +113,12 @@ export const login = (req, res) => {
     validateLoginCredentials();
 };
 
+export const logout = (req, res) => {
+    req.session.destroy();
+    res.send({message: 'Successfully logged out'});
+};
+
+export const getUserProfile = (req, res) => {
+    res.send(req.session.user);
+};
+
