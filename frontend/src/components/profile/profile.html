@@ -1,0 +1,11 @@
+<div class="row" ng-controller="profileCtrl">
+  <div class="input-field col s12 center-align">
+      <h1>
+          Welcome, {{vm.user.first_name + ' ' + vm.user.last_name}}!
+      </h1>
+  </div>
+  <div class="input-field col s12 center-align">
+      <a class="btn" ng-click="vm.logout()"> Log Out </a>
+  </div>
+</div>
+

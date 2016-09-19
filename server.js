@@ -9,6 +9,7 @@ import compression from 'compression';
 import {log} from 'winston';
 import {default as mysql} from 'anytv-node-mysql';
 import {default as cors} from 'anytv-node-cors';
+import {default as ejs} from 'ejs-locals';
 
 let handler;
 let app;
@@ -32,6 +33,13 @@ const start = () => {
         saveUninitialized: false,
         resave: false
     }));
+
+    //configure frontend proponents
+    app.engine('html', ejs);
+    app.set('views', config.VIEWS_DIR);
+    app.set('view engine', 'html');
+    app.use('/bower_components', express.static(config.BOWER_DIR));
+    app.use('/assets', express.static(config.DIST_DIR));
 
     // middleware setup for receiving API request payload and headers
     log('info', 'Applying custom middleware');

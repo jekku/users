@@ -42,8 +42,13 @@
     "body-parser": "^1.15.2",
     "chance": "^1.0.4",
     "compression": "^1.6.2",
+    "ejs-locals": "^1.0.2",
     "express": "^4.14.0",
     "express-session": "^1.14.1",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-rename": "^1.2.2",
     "supertest": "^2.0.0",
     "validatorjs": "^3.6.0",
     "winston": "^2.2.0"
