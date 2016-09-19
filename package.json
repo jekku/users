@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "nodemon -w . --exec \"babel-node server.js\"",
-    "test": "NODE_ENV=test mocha -r should test/test-server.js --compilers js:babel-register"
+    "test": "NODE_ENV=test mocha -r should test/test-server.js --compilers js:babel-register",
+    "compile": "babel . --ignore node_modules --out-dir dist",
+    "prod": "sudo NODE_ENV=production forever start dist/server.js",
+    "launch": "sudo forever stopall && git checkout master && git pull origin master && npm install && npm run compile && npm run prod"
   },
   "repository": {
     "type": "git",
