@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="/bower_components/materialize/dist/css/materialize.min.css"/>
+    </head>
+
+    <body ng-app="usersApp">
+        <div class="container" ng-controller="mainCtrl">
+            <div ng-switch="state">
+                <div ng-switch-when="loading">
+                    <div class="progress">
+                      <div class="indeterminate"> </div>
+                    </div>
+                </div>
+
+                <div ng-switch-when="profile">
+                    <profile> </profile>
+                </div>
+
+                <div ng-switch-when="register">
+                    <register> </register>
+                </div>
+
+                <div ng-switch-default>
+                    <login> </login>
+                </div>
+            <div>
+
+        </div>
+        <script src="/bower_components/jquery/dist/jquery.min.js"> </script>
+        <script src="/bower_components/angular/angular.min.js"> </script>
+        <script src="/bower_components/angular-local-storage/dist/angular-local-storage.min.js"> </script>
+        <script src="/bower_components/materialize/dist/js/materialize.min.js"> </script>
+
+        <script src="/assets/env.js"> </script>
+        <script src="/assets/app.min.js"> </script>
+    </body>
+</html>
+

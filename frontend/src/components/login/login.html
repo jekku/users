@@ -1,0 +1,23 @@
+<form class="row" ng-controller="loginCtrl">
+  <div class="input-field col s6">
+      <input ng-model="vm.username" id="username" type="text" class="validate" required/>
+      <label for="username">Username</label>
+  </div>
+  <div class="input-field col s6">
+      <input ng-model="vm.password" id="password" type="password" class="validate" required/>
+      <label for="password">Password</label>
+  </div>
+
+  <div class="input-field col s12 center-align">
+      <input type="submit" class="btn" ng-click="vm.login()" value="Login"/>
+  </div>
+
+  <div class="input-field col s12 center-align">
+      OR
+  </div>
+
+  <div class="input-field col s12 center-align">
+      <a class="btn" ng-click="vm.goToRegistration()"> Sign Up </a>
+  </div>
+</form>
+

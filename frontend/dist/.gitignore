@@ -1,0 +1,4 @@
+# Keep folder intact but not the contents
+*
+!.gitignore
+

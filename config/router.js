@@ -18,6 +18,8 @@ export default () => {
 
     router.del = router.delete;
 
+    router.get('/', (req, res) => res.render('index'));
+
     router.post('/api/user/register', UserController.registerUser);
     router.post('/api/user/login',    UserController.login);
     router.post('/api/user/logout',   UserController.logout);

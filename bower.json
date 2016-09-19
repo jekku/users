@@ -1,0 +1,28 @@
+{
+  "name": "users",
+  "description": "ISR programming examination",
+  "main": "server.js",
+  "authors": [
+    "Jekri Preclaro Orlina"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "users",
+    "ISR"
+  ],
+  "homepage": "https://github.com/jekku/users",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-local-storage": "^0.5.0",
+    "angular": "^1.5.8",
+    "materialize": "^0.97.7"
+  }
+}

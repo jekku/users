@@ -1,0 +1,45 @@
+<div class="row" ng-controller="registerCtrl">
+    <form class="col s12" ng-submit="vm.register()">
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="first_name" ng-model="vm.firstName" type="text" class="validate" required/>
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s6">
+          <input id="last_name" ng-model="vm.lastName" type="text" class="validate" required/>
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="username" ng-model="vm.username" type="text" class="validate" required/>
+          <label for="username">Username</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" ng-model="vm.password" type="password" class="validate" required/>
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" ng-model="vm.email" class="validate" required/>
+          <label for="email">Email</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 center-align">
+          <input type="submit"  class="btn" value="Register Now"/>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12 center-align">
+            <a class="btn" ng-click="vm.cancelRegistration()"> Cancel </a>
+        </div>
+      </div>
+    </form>
+</div>
+
