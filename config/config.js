@@ -8,9 +8,9 @@ const config = {
 
     SESSION_SECRET: 'AEZAKMIBAGUVIX',
 
-    BOWER_DIR: path.normalize(__dirname + '/../bower_components'),
-    DIST_DIR: path.normalize(__dirname + '/../frontend/dist'),
-    VIEWS_DIR: path.normalize(__dirname + '/../views'),
+    BOWER_DIR: path.normalize(__dirname + '/../../bower_components'),
+    DIST_DIR: path.normalize(__dirname + '/../../frontend/dist'),
+    VIEWS_DIR: path.normalize(__dirname + '/../../views'),
 
     CORS: {
         allowed_origins: '*',
