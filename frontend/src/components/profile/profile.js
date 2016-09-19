@@ -3,7 +3,7 @@
       .directive('profile', profile)
       .controller('profileCtrl', profileCtrl);
 
-    profileCtrl.$inject = ['$scope', '$rootScope', 'userService'];
+    profileCtrl.$inject = ['$scope', '$rootScope', 'userService', 'localStorageService'];
 
     function profile () {
         var directive = {
@@ -21,10 +21,11 @@
         return directive;
     }
 
-    function profileCtrl ($scope, $rootScope, userService) {
+    function profileCtrl ($scope, $rootScope, userService, localStorageService) {
         var vm = $scope.vm;
 
         vm.logout = function () {
+            localStorageService.remove('profile');
             userService.logout().then(getHome);
         }
 
@@ -33,6 +34,7 @@
 
         function display (data) {
             vm.user = data.data;
+            localStorageService.set('profile', vm.user);
         }
 
         function showErrors (error) {

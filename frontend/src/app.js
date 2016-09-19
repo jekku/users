@@ -7,7 +7,8 @@ if (window) {
 (function (angular, Materialize) {
     angular.module('usersApp', [
         'usersApp.service',
-        'usersApp.components'
+        'usersApp.components',
+        'LocalStorageModule'
     ]).constant('__env', env);
 })(angular, Materialize);
 

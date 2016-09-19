@@ -3,7 +3,7 @@
       .directive('login', login)
       .controller('loginCtrl', loginCtrl);
 
-    loginCtrl.$inject = ['$scope', '$rootScope', 'userService'];
+    loginCtrl.$inject = ['$scope', '$rootScope', 'userService', 'localStorageService'];
 
     function login () {
         var directive = {
@@ -21,7 +21,7 @@
         return directive;
     }
 
-    function loginCtrl ($scope, $rootScope, userService) {
+    function loginCtrl ($scope, $rootScope, userService, localStorageService) {
         var vm = $scope.vm;
 
         vm.login = function () {
