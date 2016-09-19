@@ -80,6 +80,6 @@ Milestone Progress
   - [x] User logout
 
 - Frontend
-  - [ ] User registration
-  - [ ] User login
-  - [ ] User logout
+  - [x] User registration
+  - [x] User login
+  - [x] User logout
