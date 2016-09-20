@@ -48,7 +48,10 @@
 
         function showError (error) {
             if (error.data.errors) {
-                return Materialize.toast('Please add all required fields');
+                var keys = Object.keys(error.data.errors);
+                keys.forEach( function (key) {
+                    Materialize.toast(error.data.errors[key], 3000);
+                });
             }
 
             Materialize.toast(error.data.message, 3000);
